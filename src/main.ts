@@ -1,4 +1,5 @@
 /// <reference types="@workadventure/iframe-api-typings" />
+
 import { bootstrapExtra } from '@workadventure/scripting-api-extra';
 
 console.log('Script started successfully');
@@ -11,10 +12,10 @@ WA.onInit()
 		console.log('Scripting API ready');
 		console.log('Player tags: ', WA.player.tags);
 
+		// Remplacez 'clock' par l'ID de la zone où vous souhaitez afficher la vidéo
 		WA.room.area.onEnter('clock').subscribe(() => {
-			const today = new Date();
-			const time = today.getHours() + ':' + today.getMinutes();
-			currentPopup = WA.ui.openPopup('clockPopup', "It's " + time, []);
+			const videoUrl = 'https://www.youtube.com/embed/BjQm3utCw9w'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
+			WA.nav.openCoWebSite(videoUrl, true);
 		});
 
 		WA.room.area.onLeave('clock').subscribe(closePopup);

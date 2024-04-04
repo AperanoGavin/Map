@@ -729,6 +729,28 @@
                  "width":135,
                  "x":539,
                  "y":475
+                }, 
+                {
+                 "height":405.732741219217,
+                 "id":34,
+                 "name":"chooseRole",
+                 "rotation":0,
+                 "type":"chooseRole",
+                 "visible":true,
+                 "width":728.704077513121,
+                 "x":159.467097295115,
+                 "y":169.5599515543
+                }, 
+                {
+                 "height":87.182624655858,
+                 "id":36,
+                 "name":"getComedianId",
+                 "rotation":0,
+                 "type":"getComedianId",
+                 "visible":true,
+                 "width":48.9446313857449,
+                 "x":29.060874885286,
+                 "y":339.553380238605
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -737,7 +759,7 @@
          "y":0
         }],
  "nextlayerid":67,
- "nextobjectid":34,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "properties":[
         {

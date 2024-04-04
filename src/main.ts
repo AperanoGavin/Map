@@ -14,7 +14,8 @@ WA.onInit()
 
 		// Remplacez 'clock' par l'ID de la zone où vous souhaitez afficher la vidéo
 		WA.room.area.onEnter('clock').subscribe(() => {
-			const videoUrl = 'https://loiczhu.github.io/#twitch'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
+			const videoUrl =
+				'https://player.twitch.tv/?channel=loic_z&parent=play.workadventu.re'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
 			WA.nav.openCoWebSite(videoUrl, true);
 		});
 

@@ -110,6 +110,37 @@ async function main() {
         ttl: 24 * 3600,
         scope: "world",
     });
+
+    WA.room.area.onEnter("start").subscribe(() => {
+        console.log("start")
+        //rediriger tout ce qui ont le role audience vers la zone "audience" et les comediens vers la zone "comedian"
+        WA.room.area.onEnter("start").subscribe(() => {
+            console.log("start")
+            //set un parametre sur le joueur qu'on va appeler  root
+                       
+            // Initiate movement for the player
+            movePlayerToRandomLocation(WA.player);
+
+            // Set an interval to continue movement
+            const intervalId = setInterval(() => {
+                movePlayerToRandomLocation(WA.player);
+            }, 100);
+
+            // Stop the interval after the first iteration
+            setTimeout(() => {
+                clearInterval(intervalId);
+            }, 1000); // Adjust the delay as needed
+                });
+        
+
+    });
+
+    WA.room.area.onLeave("start").subscribe(() => {
+        if (actionMessage !== undefined) {
+            actionMessage.remove();
+            actionMessage = undefined;
+        }
+    });
     
     WA.room.area.onEnter("gateauxPopup").subscribe(() => {
         if(WA.player.state.role === "comedian"){
@@ -197,8 +228,27 @@ async function main() {
     WA.room.area.onLeave('gateauxPopup').subscribe(closePopup)
     WA.room.area.onLeave('toilettePopup').subscribe(closePopup)
     WA.room.area.onLeave('dehorePopup').subscribe(closePopup)
+    WA.room.area.onLeave('start').subscribe(closePopup)
+    WA.room.area.onLeave('Started').subscribe(closePopup)
+
+
+    //lancer ce code chaque 5 secondes
+   
 }
 main().catch(console.error);
+
+function  movePlayerToRandomLocation(player){
+    //verifier si le joueur est un comédien ou un audience
+    if (WA.player.state.role === "audience") {
+        //pour audience on le redirige vers la zone audience aleatoirement entre x = 491.69 et y= 274.14 speed = 0.1
+        WA.player.moveTo(491.69, 274.14, 10);
+    } else if (WA.player.state.role === "comedian") {
+        //pour comedian on le redirige vers la zone comedian aleatoirement entre x = 684.47 et y= 159.18  speed = 0.1
+        WA.player.moveTo(684.47, 159.18, 10);
+    }
+}
+
+
 
 function countPlayersByRole(role: string): number {
     let count = 0;

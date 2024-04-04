@@ -16,15 +16,13 @@ async function main() {
     console.log('Scripting API ready');
     await bootstrapExtra()
     console.log('Scripting API Extra ready');
-    console.log('Player tags: ',WA.player.tags);
     //WA.state.saveVariable(key : string, data : unknown): void
-    let [currentComedian, currentAudience] = await Promise.all([WA.player.state.loadVariable("currentComedian"), WA.player.state.loadVariable("currentComedian")]); 
-    
-    WA.state.comedians = 
-
-    // Récupérer les valeurs précédentes ou les définir à zéro
-    currentComedian = Number.parseInt(currentComedian as string) || 0;
-    currentAudience = Number.parseInt(currentAudience as string) || 0;
+     // Initialize currentComedian to count the number of players with the "comedian" role
+     await delay(2000);
+     let currentComedian = countPlayersByRole("comedian");
+     let currentAudience = 0;   
+ 
+     // Configure player tracking
     await WA.players.configureTracking({
         players: true,
         movement: true,
@@ -65,7 +63,7 @@ async function main() {
         }
     });
     
-    
+
     console.log(currentComedian)
     
     
@@ -202,6 +200,21 @@ async function main() {
 }
 main().catch(console.error);
 
+function countPlayersByRole(role: string): number {
+    let count = 0;
+    const players = WA.players.list();
+    for (const player of players) {
+        if (player.state.role === role) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function closePopup(){
     if (currentPopup !== undefined) {
         currentPopup.close();
@@ -210,3 +223,4 @@ function closePopup(){
 }
 
 export {};
+

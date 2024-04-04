@@ -7,7 +7,7 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 
 // Waiting for the API to be ready
-WA.onInit().then(() => {
+WA.onInit().then(async() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
     //WA.state.saveVariable(key : string, data : unknown): void
@@ -15,9 +15,14 @@ WA.onInit().then(() => {
     //parcouri les joueurs et compter leur role si c'est un comédien faire +1
     let currentComedian = 0;
     let currentAudience = 0;
+    await WA.players.configureTracking({
+        players: true,
+        movement: true,
+    }
+
+    );
+    //liste des joueurs
     const players = WA.players.list();
-
-
 
     for (const player of players) {
         if(player.state.role === "comedian"){
@@ -27,22 +32,35 @@ WA.onInit().then(() => {
             currentAudience++;
         }
     }
-    //demander pour recuperer toutes les variables de tous les joueurs
 
-    //si un joueur change sa variable role alors on met à jour le compteur de comédien et d'audience 
-   /*  WA.state.onVariableChange('role').subscribe((value) => {
-        if(value === "comedian"){
+    console.log(Array.from(players))
+    //rajouter les joueurs qui entrent 
+    WA.players.onPlayerEnters.subscribe((player) => {
+
+        if(player.state.role === "comedian"){
             currentComedian++;
         }
-        else if(value === "audience"){
+        else if(player.state.role === "audience"){
             currentAudience++;
         }
-    }); */
+    });
 
+    //retirer les joueurs qui partent
+    WA.players.onPlayerLeaves.subscribe((player) => {
 
+        if(player.state.role === "comedian"){
+            currentComedian--;
+        }
+        else if(player.state.role === "audience"){
+            currentAudience--;
+        }
+    });
+
+ 
     console.log(currentComedian)
-    console.log(WA.player.state.role)
-    if(currentComedian<=0 || (WA.player.state.role === "comedian" || WA.player.state.role === "audience")){
+
+
+    if(currentComedian<=0 && (WA.player.state.role != "comedian" || WA.player.state.role != "audience")){
 
 
         WA.ui.openPopup("chooseRole", "Choose your role", [
@@ -58,7 +76,6 @@ WA.onInit().then(() => {
                     });
                     currentComedian++;
                     console.log(currentComedian)
-                    console.log(currentAudience)
                     popup.close()
                 }
             },

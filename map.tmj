@@ -806,6 +806,28 @@
                  "width":0,
                  "x":491.687301025822,
                  "y":274.142200212239
+                }, 
+                {
+                 "height":47.1897450345119,
+                 "id":47,
+                 "name":"spectacle",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":59.1632624313283,
+                 "x":555.00774757008,
+                 "y":123.256796731934
+                }, 
+                {
+                 "height":58.1755167718777,
+                 "id":48,
+                 "name":"before",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":351.528654536453,
+                 "x":334.199777200149,
+                 "y":43.32219334076
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -814,7 +836,7 @@
          "y":0
         }],
  "nextlayerid":67,
- "nextobjectid":47,
+ "nextobjectid":49,
  "orientation":"orthogonal",
  "properties":[
         {

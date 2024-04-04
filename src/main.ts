@@ -129,11 +129,29 @@ async function main() {
             // Stop the interval after the first iteration
             setTimeout(() => {
                 clearInterval(intervalId);
-            }, 1000); // Adjust the delay as needed
+            }, 1000); 
                 });
-        
 
     });
+
+    //si un joueur avec le role comedian entre dans la zone "spectacle"  on  commence un compteur de 30 secondes et à la fin
+    // on affichera un message pour dire que c'est au tour du deuxieme comédien 
+
+    WA.room.area.onEnter("spectacle").subscribe(() => {
+        if(WA.player.state.role === "comedian"){
+            WA.ui.openPopup("before" , "You have 5 seconds to start your show", [
+                {
+                    label: "Start",
+                    className: "primary",
+                    callback: (popup) => {
+                        popup.close()
+                        }
+                }
+         ]);
+            
+        }
+    });
+
 
     WA.room.area.onLeave("start").subscribe(() => {
         if (actionMessage !== undefined) {
@@ -220,6 +238,9 @@ async function main() {
         'https://player.twitch.tv/?channel=loic_z&parent=play.workadventu.re'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
         WA.nav.openCoWebSite(videoUrl, true);
     });
+
+
+    //verifier si les deux comedians on preste leur show et lance le vote ou un comedien peut le lancer manuellement
     
     
     

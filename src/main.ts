@@ -14,7 +14,7 @@ WA.onInit()
 
 		// Remplacez 'clock' par l'ID de la zone où vous souhaitez afficher la vidéo
 		WA.room.area.onEnter('clock').subscribe(() => {
-			const videoUrl = 'https://www.youtube.com/embed/BjQm3utCw9w'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
+			const videoUrl = 'https://loiczhu.github.io/#twitch'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
 			WA.nav.openCoWebSite(videoUrl, true);
 		});
 

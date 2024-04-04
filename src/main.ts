@@ -106,13 +106,12 @@ WA.onInit().then(async() => {
 
 
    
-        
+		WA.room.area.onEnter('clock').subscribe(() => {
+			const videoUrl =
+				'https://player.twitch.tv/?channel=loic_z&parent=play.workadventu.re'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
+			WA.nav.openCoWebSite(videoUrl, true);
+		});
 
-    WA.room.area.onEnter('clock').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup", "It's " + time, []);
-    })
 
     WA.room.area.onLeave('clock').subscribe(closePopup)
 

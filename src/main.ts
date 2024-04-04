@@ -60,7 +60,8 @@ WA.onInit().then(async() => {
     console.log(currentComedian)
 
 
-    if(currentComedian<=0 && (WA.player.state.role != "comedian" || WA.player.state.role != "audience")){
+    //if(currentComedian<=0 && (WA.player.state.role != "comedian" || WA.player.state.role != "audience")){
+    if(currentComedian < 1 && !WA.player.state.role){
 
 
         WA.ui.openPopup("chooseRole", "Choose your role", [

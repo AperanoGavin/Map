@@ -14,7 +14,7 @@ WA.onInit().then(async() => {
 
     //parcouri les joueurs et compter leur role si c'est un comédien faire +1
     let currentComedian = 0;
-    let currentAudience = 0;
+    //let currentAudience = 0;
     await WA.players.configureTracking({
         players: true,
         movement: true,

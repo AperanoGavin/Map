@@ -704,52 +704,10 @@
                  "rotation":0,
                  "type":"area",
                  "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":544
+                 "width":44,
+                 "x":57.3333333333333,
+                 "y":97.3333333333333
                 }, 
-                {
-                 "height":371.356502242152,
-                 "id":20,
-                 "name":"chooseRole",
-                 "rotation":0,
-                 "type":"chooseRole",
-                 "visible":true,
-                 "width":500.280269058296,
-                 "x":309.69730941704,
-                 "y":168.161434977578
-                }, 
-                {
-                 "height":0,
-                 "id":26,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":1.40134529147974,
-                 "x":612.387892376682,
-                 "y":788.957399103139
-                }, 
-                {
-                 "height":0,
-                 "id":30,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":2.8026905829596,
-                 "x":741.311659192825,
-                 "y":714.686098654709
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "id":51,
-         "layers":[
                 {
                  "height":51.3333333333334,
                  "id":32,

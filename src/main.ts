@@ -107,6 +107,21 @@ WA.onInit().then(async() => {
         scope: "world",
     });
 
+    WA.room.area.onEnter("gateauxPopup").subscribe(() => {
+        console.log(WA.player.playerId)
+        if(WA.player.state.role === "comedian"){
+            WA.ui.openPopup("idPassage", WA.player.playerId.toString(), [
+                {
+                    label: "Copy",
+                    className: "primary",
+                    callback: (popup) => {
+                        navigator.clipboard.writeText(WA.player.playerId.toString() ); //afficher le numéro de passage as id du joueur 
+                        popup.close()
+                    }
+                }
+            ])
+        }
+    });
 
    
 

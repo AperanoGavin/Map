@@ -751,6 +751,17 @@
                  "width":48.9446313857449,
                  "x":29.060874885286,
                  "y":339.553380238605
+                }, 
+                {
+                 "height":100.948302233099,
+                 "id":37,
+                 "name":"idPassage",
+                 "rotation":0,
+                 "type":"idPassage",
+                 "visible":true,
+                 "width":186.601407158152,
+                 "x":198.837565004589,
+                 "y":319.669623738146
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -759,7 +770,7 @@
          "y":0
         }],
  "nextlayerid":67,
- "nextobjectid":37,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "properties":[
         {

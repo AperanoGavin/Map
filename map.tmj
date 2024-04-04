@@ -494,6 +494,17 @@
                  "width":2.8026905829596,
                  "x":741.311659192825,
                  "y":714.686098654709
+                }, 
+                {
+                 "height":333.22601416613,
+                 "id":32,
+                 "name":"startGame",
+                 "rotation":0,
+                 "type":"startGame",
+                 "visible":true,
+                 "width":695.428203477141,
+                 "x":223.760463618802,
+                 "y":152.929813264649
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -576,7 +587,7 @@
          "y":0
         }],
  "nextlayerid":63,
- "nextobjectid":32,
+ "nextobjectid":33,
  "orientation":"orthogonal",
  "properties":[
         {

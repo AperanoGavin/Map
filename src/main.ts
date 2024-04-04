@@ -33,7 +33,7 @@ WA.onInit().then(async() => {
         }
     }
 
-    console.log(Array.from(players))
+    //console.log(Array.from(players))
     //rajouter les joueurs qui entrent 
     WA.players.onPlayerEnters.subscribe((player) => {
 
@@ -58,11 +58,11 @@ WA.onInit().then(async() => {
 
  
     console.log(currentComedian)
+    console.log(WA.player.state.role)
 
+    
 
-    //if(currentComedian<=0 && (WA.player.state.role != "comedian" || WA.player.state.role != "audience")){
-    if(currentComedian < 1 && !WA.player.state.role){
-
+    if(currentComedian<=5 && (WA.player.state.role != "comedian" || WA.player.state.role != "audience")){
 
         WA.ui.openPopup("chooseRole", "Choose your role", [
             {
@@ -91,22 +91,27 @@ WA.onInit().then(async() => {
                         scope: "world",
                     });
                     currentAudience++;
+                    console.log(currentComedian)
                     popup.close()
                 }
             }
         ]) 
+    }else{
+        WA.player.state.saveVariable("role", "audience", {
+            public: true,
+            persist: true,
+            ttl: 24 * 3600,
+            scope: "world",
+        });
+
     }
 
-    WA.player.state.saveVariable("role", "audience", {
-        public: true,
-        persist: true,
-        ttl: 24 * 3600,
-        scope: "world",
-    });
-
-
    
-        
+
+
+    console.log(WA.player.state.role)
+
+    
 
     WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
@@ -121,7 +126,22 @@ WA.onInit().then(async() => {
         console.log('Scripting API Extra ready');
     }).catch(e => console.error(e));
 
+    if(WA.player.state.role === "comedian"){ 
+        WA.ui.actionBar.addButton({
+            id: 'register-btn',
+            label: WA.player.playerId.toString(),
+            callback: (event) => {
+                console.log('Button clicked', event);
+                // When a user clicks on the action bar button 'Register', we remove it.
+                WA.ui.actionBar.removeButton('register-btn');
+            }
+        });
+    }
+
+   
+
 }).catch(e => console.error(e));
+
 
 
 function closePopup(){

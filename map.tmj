@@ -652,7 +652,7 @@
                         {
                          "name":"closeSound",
                          "type":"string",
-                         "value":""
+                         "value":".\/sound\/porte.mp3"
                         }, 
                         {
                          "name":"code",
@@ -677,7 +677,7 @@
                         {
                          "name":"openSound",
                          "type":"string",
-                         "value":""
+                         "value":".\/sound\/porte.mp3"
                         }],
                  "rotation":0,
                  "type":"variable",

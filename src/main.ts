@@ -138,7 +138,6 @@ async function main() {
 				movePlayerToRandomLocation(WA.player);
 			}, 100);
 
-			// Stop the interval after the first iteration
 			setTimeout(() => {
 				clearInterval(intervalId);
 			}, 1000);
@@ -148,6 +147,12 @@ async function main() {
 	//si un joueur avec le role comedian entre dans la zone "spectacle"  on  commence un compteur de 30 secondes et à la fin
 	// on affichera un message pour dire que c'est au tour du deuxieme comédien
 
+	WA.state.onVariableChange('start_stream').subscribe((value) => {
+		const comedianTwitchChannel = WA.player.state.loadVariable(COMEDIAN_TWITCH_KEY);
+		const videoUrl = `https://player.twitch.tv/?channel=${comedianTwitchChannel}&parent=play.workadventu.re`;
+		WA.nav.openCoWebSite(videoUrl, true);
+	});
+
 	WA.room.area.onEnter('spectacle').subscribe(() => {
 		if (WA.player.state.role === 'comedian') {
 			WA.ui.openPopup('before', 'You have 5 seconds to start your show', [
@@ -155,6 +160,7 @@ async function main() {
 					label: 'Start',
 					className: 'primary',
 					callback: (popup) => {
+						WA.state.saveVariable('start_stream', true);
 						WA.player.state.saveVariable('comedianPassed', true, {
 							public: true,
 							persist: true,
@@ -180,11 +186,6 @@ async function main() {
 								clearInterval(intervalId);
 							}
 						}, 2000);
-						const comedianTwitchChannel =
-							WA.player.state.loadVariable(COMEDIAN_TWITCH_KEY);
-						const videoUrl = `https://player.twitch.tv/?channel=${comedianTwitchChannel}&parent=play.workadventu.re`;
-
-						WA.nav.openCoWebSite(videoUrl, true);
 					},
 				},
 			]);

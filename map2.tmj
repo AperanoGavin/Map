@@ -229,7 +229,18 @@
          "draworder":"topdown",
          "id":7,
          "name":"floorLayer",
-         "objects":[],
+         "objects":[
+                {
+                 "height":140,
+                 "id":1,
+                 "name":"Presentation",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":223,
+                 "x":208,
+                 "y":38
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -237,7 +248,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":1,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

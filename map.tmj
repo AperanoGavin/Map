@@ -828,6 +828,17 @@
                  "width":351.528654536453,
                  "x":334.199777200149,
                  "y":43.32219334076
+                }, 
+                {
+                 "height":47.0384947681674,
+                 "id":49,
+                 "name":"vote",
+                 "rotation":0,
+                 "type":"area",
+                 "visible":true,
+                 "width":62.3980032638956,
+                 "x":361.908418930594,
+                 "y":95.9969280983008
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -836,7 +847,7 @@
          "y":0
         }],
  "nextlayerid":67,
- "nextobjectid":49,
+ "nextobjectid":51,
  "orientation":"orthogonal",
  "properties":[
         {

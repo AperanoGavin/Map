@@ -144,6 +144,12 @@ async function main() {
                     label: "Start",
                     className: "primary",
                     callback: (popup) => {
+                        WA.player.state.saveVariable("comedianPassed", true, {
+                            public: true,
+                            persist: true,
+                            ttl: 24 * 3600,
+                            scope: "world",
+                        });
                         popup.close()
                         }
                 }
@@ -152,6 +158,18 @@ async function main() {
         }
     });
 
+    WA.room.area.onLeave("spectacle").subscribe(() => {
+        if (actionMessage !== undefined) {
+            actionMessage.remove();
+            actionMessage = undefined;
+        }
+    });
+
+    WA.room.area.onEnter("vote").subscribe(() => {
+        console.log("vote")
+        checkComedians();
+
+    });
 
     WA.room.area.onLeave("start").subscribe(() => {
         if (actionMessage !== undefined) {
@@ -269,6 +287,36 @@ function  movePlayerToRandomLocation(player){
     }
 }
 
+//parcourir la liste des joueurs et si y'a deux avec comedianPassed à true on lance le vote
+function checkComedians(){
+    const players = WA.players.list();
+    let comedians = 0;
+    for (const player of players) {
+        if(player.state.role === "comedian" && player.state.comedianPassed === true){
+            comedians++;
+        }
+    }
+    if(comedians === 2){
+        WA.ui.openPopup("before", "Vote for the best comedian", [
+            {
+                label: "Player 1",
+                className: "primary",
+                callback: (popup) => {
+                    //envoyer un message pour dire que le joueur 1 a gagné
+                    popup.close()
+                }
+            },
+            {
+                label: "Player 2",
+                className: "primary",
+                callback: (popup) => {
+                    //envoyer un message pour dire que le joueur 2 a gagné
+                    popup.close()
+                }
+            }
+        ])
+    }
+}
 
 
 function countPlayersByRole(role: string): number {

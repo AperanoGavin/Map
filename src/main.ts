@@ -2,6 +2,7 @@
 
 import { bootstrapExtra } from '@workadventure/scripting-api-extra';
 import { ActionMessage } from '@workadventure/iframe-api-typings';
+import { playSoundOnChatCommand } from './reactions';
 
 console.log('Script started successfully');
 
@@ -285,6 +286,14 @@ async function main() {
 		const videoUrl =
 			'https://player.twitch.tv/?channel=loic_z&parent=play.workadventu.re'; // Remplacez VIDEO_ID par l'ID de la vidéo YouTube
 		WA.nav.openCoWebSite(videoUrl, true);
+	});
+	console.log(WA.player.state.role);
+
+	WA.room.area.onEnter('Scene').subscribe(() => {
+		if (WA.player.state.role === 'audience') {
+			console.log('PLAY SOUND !!');
+			playSoundOnChatCommand();
+		}
 	});
 
 	//verifier si les deux comedians on preste leur show et lance le vote ou un comedien peut le lancer manuellement

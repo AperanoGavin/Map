@@ -148,8 +148,7 @@ async function main() {
 	// on affichera un message pour dire que c'est au tour du deuxieme comédien
 
 	WA.state.onVariableChange('start_stream').subscribe((value) => {
-		console.log('start_stream', value);
-		const comedianTwitchChannel = WA.player.state.loadVariable(COMEDIAN_TWITCH_KEY);
+		const comedianTwitchChannel = WA.state.twitch;
 		const videoUrl = `https://player.twitch.tv/?channel=${comedianTwitchChannel}&parent=play.workadventu.re`;
 		WA.nav.openCoWebSite(videoUrl, true);
 	});
@@ -161,6 +160,7 @@ async function main() {
 					label: 'Start',
 					className: 'primary',
 					callback: (popup) => {
+						WA.state.twitch = WA.player.state.loadVariable(COMEDIAN_TWITCH_KEY);
 						WA.state.start_stream = true;
 						WA.player.state.saveVariable('comedianPassed', true, {
 							public: true,

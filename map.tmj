@@ -869,6 +869,36 @@
                  "width":0,
                  "x":942.527104277548,
                  "y":126.452460739865
+                }, 
+                {
+                 "height":0,
+                 "id":53,
+                 "name":"twitch",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"default",
+                         "type":"string",
+                         "value":""
+                        }],
+                 "rotation":0,
+                 "type":"variable",
+                 "visible":true,
+                 "width":0,
+                 "x":902.114462185426,
+                 "y":110.808857349366
+                }, 
+                {
+                 "height":0,
+                 "id":54,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1151.10848281753,
+                 "y":-11.732702542874
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -877,7 +907,7 @@
          "y":0
         }],
  "nextlayerid":67,
- "nextobjectid":53,
+ "nextobjectid":55,
  "orientation":"orthogonal",
  "properties":[
         {

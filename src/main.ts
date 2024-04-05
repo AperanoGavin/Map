@@ -10,6 +10,10 @@ let actionMessage: ActionMessage | undefined;
 
 const COMEDIAN_TWITCH_KEY = 'twitch-channel';
 
+function closeTwitchIframe() {
+	WA.nav.closeCoWebSite(); // Cette fonction fermera l'iframe Twitch
+}
+
 async function main() {
 	// Waiting for the API to be ready
 	await WA.onInit();
@@ -170,6 +174,7 @@ async function main() {
 									if (countDownPopup) {
 										countDownPopup.close();
 									}
+									closeTwitchIframe();
 								}, 1000);
 								clearInterval(intervalId);
 							}

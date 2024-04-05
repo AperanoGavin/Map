@@ -8,6 +8,8 @@ console.log('Script started successfully');
 let currentPopup: any = undefined;
 let actionMessage: ActionMessage | undefined;
 
+const COMEDIAN_TWITCH_KEY = 'twitch-channel';
+
 async function main() {
 	// Waiting for the API to be ready
 	await WA.onInit();
@@ -78,20 +80,18 @@ async function main() {
 					currentComedian++;
 					console.log(currentComedian);
 					popup.close();
-					const formUrl =
-						'https://mazene-zerguine.github.io/Mazene-ZERGUINE/comedianForm.html';
-					WA.nav.openCoWebSite(formUrl);
-
-					window.addEventListener(
-						'message',
-						(event) => {
-							const data = event.data;
-							if (data.type === 'info') {
-								console.log(data.body);
-							}
-						},
-						false,
+					WA.chat.open();
+					WA.chat.sendChatMessage(
+						'👉 Type your Twitch channel for people to watch you live! 👈',
 					);
+					WA.chat.onChatMessage((message) => {
+						WA.player.state.saveVariable(COMEDIAN_TWITCH_KEY, message.trim(), {
+							public: true,
+							persist: true,
+							ttl: 24 * 3600,
+							scope: 'world',
+						});
+					});
 				},
 			},
 			{
@@ -174,11 +174,20 @@ async function main() {
 								clearInterval(intervalId);
 							}
 						}, 2000);
+						const comedianTwitchChannel =
+							WA.player.state.loadVariable(COMEDIAN_TWITCH_KEY);
+						const videoUrl = `https://player.twitch.tv/?channel=${comedianTwitchChannel}&parent=play.workadventu.re`;
+
+						WA.nav.openCoWebSite(videoUrl, true);
 					},
 				},
 			]);
 		} else {
-			WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
+			let closePop = WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
+
+			setTimeout(() => {
+				closePop.close();
+			}, 2000);
 		}
 	});
 

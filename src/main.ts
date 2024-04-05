@@ -165,7 +165,10 @@ async function main() {
 				},
 			]);
 		} else {
-			WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
+			let popUp = WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
+			setTimeout(() => {
+				popUp.close();
+			}, 2000);
 		}
 	});
 

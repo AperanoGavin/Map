@@ -2900,7 +2900,19 @@
     },
     {
       "name": "floorLayer",
-      "objects": [],
+      "objects": [
+        {
+          "id": 1,
+          "name": "Presentation",
+          "visible": true,
+          "x": 208,
+          "y": 38,
+          "height": 140,
+          "rotation": 0,
+          "type": "area",
+          "width": 223
+        }
+      ],
       "opacity": 1,
       "type": "objectgroup",
       "visible": true,
@@ -2915,7 +2927,7 @@
     {
       "columns": 6,
       "firstgid": 1,
-      "image": "map2-chunk-1-a231d5d9.png",
+      "image": "map2-chunk-1-10f9e3b0.png",
       "imageheight": 192,
       "imagewidth": 192,
       "margin": 0,
@@ -2933,7 +2945,7 @@
   "height": 20,
   "infinite": false,
   "nextlayerid": 9,
-  "nextobjectid": 1,
+  "nextobjectid": 3,
   "orientation": "orthogonal",
   "renderorder": "right-down",
   "tileheight": 32,

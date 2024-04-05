@@ -2,7 +2,6 @@
 
 import { bootstrapExtra } from '@workadventure/scripting-api-extra';
 import { ActionMessage } from '@workadventure/iframe-api-typings';
-import { time } from 'console';
 
 console.log('Script started successfully');
 
@@ -79,6 +78,20 @@ async function main() {
 					currentComedian++;
 					console.log(currentComedian);
 					popup.close();
+					const formUrl =
+						'https://mazene-zerguine.github.io/Mazene-ZERGUINE/comedianForm.html';
+					WA.nav.openCoWebSite(formUrl);
+
+					window.addEventListener(
+						'message',
+						(event) => {
+							const data = event.data;
+							if (data.type === 'info') {
+								console.log(data.body);
+							}
+						},
+						false,
+					);
 				},
 			},
 			{
@@ -157,7 +170,7 @@ async function main() {
 									if (countDownPopup) {
 										countDownPopup.close();
 									}
-								}, 2000);
+								}, 1000);
 								clearInterval(intervalId);
 							}
 						}, 2000);
@@ -165,10 +178,7 @@ async function main() {
 				},
 			]);
 		} else {
-			let popUp = WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
-			setTimeout(() => {
-				popUp.close();
-			}, 2000);
+			WA.ui.openPopup('before', "Get lost you shouldn't be here", []);
 		}
 	});
 
